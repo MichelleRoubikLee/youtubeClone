@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Joi = require('joi');
 
 const replySchema = new mongoose.Schema({
-    //commentId: {type: String, required: true},
     likes: {type: Number, default: 0},
     dislikes: {type: Number, default: 0},
     text: {type: String, required: true},
@@ -14,7 +13,6 @@ const Reply = mongoose.model('Reply', replySchema);
 
 function validateReply(reply){
     const schema = Joi.object({
-        //commentId: Joi.string().required(),
         likes: Joi.number(),
         dislikes: Joi.number(),
         text: Joi.string().min(2).max(255).required()
