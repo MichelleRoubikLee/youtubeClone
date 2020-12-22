@@ -1,5 +1,5 @@
 const {Comment, validateComment} = require('../models/comment');
-const {Reply, validateReply} = require('../models/reply');
+const {Reply, validateReply} = require('../models/comment');
 const express = require('express');
 const router = express.Router();
 
@@ -17,7 +17,7 @@ router.get('/', async(req,res) => {
 
 router.get('/:videoId/comments', async(req,res) => {
     try{
-        const comments = await Comment.findById(req.params.id);
+        const comments = await Comment.findById(req.params.videoId);
         return res.send(comments);
     } catch (error) {
         return res.status(500).send(`Internal Server Error: ${error}`);
@@ -43,11 +43,31 @@ router.post('/', async (req,res) => {
 });
 
 //reply endpoints
-router.get('/:videoId/:commentId/replies', async (req, res) =>{
+router.get('/:commentId/replies', async (req, res) =>{
     try {
-        
+        const comments = await Comment.findById(req.params.commentId);
     } catch(error){
         return res.status(500).send(`Internal Server Error: ${error}`);
+    }
+});
+
+router.post('/', async (req,res) => {
+    try {
+        const { error } = validateReply(req.body);
+        if(error) {
+            return res.status(400).send(error);
+        }
+
+        const reply = new Reply ({
+            text: req.body.text
+        });
+
+        await reply.save();
+
+        return res.send(reply);
+
+    } catch (ex) {
+        return res.status(500).send(`Internal Server Error: ${ex}`);
     }
 });
 
