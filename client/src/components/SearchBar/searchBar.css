@@ -1,0 +1,12 @@
+form {
+  width: 40%;
+}
+
+.bar {
+  display: flex !important;
+  justify-content: flex-start !important;
+}
+
+.navbar-brand {
+  padding-right: 24rem;
+}
