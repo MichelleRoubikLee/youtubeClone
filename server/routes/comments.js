@@ -3,15 +3,9 @@ const {Reply, validateReply} = require('../models/comment');
 const express = require('express');
 const router = express.Router();
 
-<<<<<<< HEAD
 
 
 //get all comments and and replies in db
-=======
-//comment endpoints
-
-//get all comments and ids in db
->>>>>>> e6e5cc37d59ce5a5836b91d1120394c575541f42
 router.get('/', async(req,res) => {
     try{
         const comments = await Comment.find();
