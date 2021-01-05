@@ -25,6 +25,18 @@ class App extends Component {
       videos: response.data.items
     })
   };
+
+  componentDidMount = async (defaultVids) => {
+    const response = await youtube.get('/search', {
+      params: {
+        relatedToVideoId: defaultVids
+      }
+    })
+    this.setState({
+      videos: response.data.items
+    })
+  };
+
   handleVideoSelect = (video) => {
     this.setState({currentVideo: video})
   }
@@ -42,7 +54,7 @@ class App extends Component {
               <Comments/>
             </div>
             <div className="col-sm">
-              <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>
+              <VideoList className="video-list" handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>
             </div>
           </div>
         </div>
