@@ -4,10 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 
-
-//comment endpoints
-
-//get all comments and ids in db
+//get all comments and and replies in db
 router.get('/', async(req,res) => {
     try{
         const comments = await Comment.find();
@@ -20,8 +17,10 @@ router.get('/', async(req,res) => {
 //find comments and replies by videoId
 router.get('/:videoId', async(req,res) => {
     try{
-        const videoData = await Comment.findById(req.params.videoId);
-        return res.send(videoData);
+        const video = await Comment.find({videoId: req.params.videoId});
+        if (!video)
+            return res.status(400).send(`The video with id "${req.params.videoId}" does not exist.`);
+        return res.send(video);
     } catch (error) {
         return res.status(500).send(`Internal Server Error: ${error}`);
     }
@@ -48,30 +47,6 @@ router.post('/', async (req,res) => {
     }
 });
 
-
-//reply endpoints
-
-//get reply to specific comment
-// router.get('/:commentId', async (req, res) =>{
-//     try {
-//         const commentData = await Reply.findById(req.params.commentId);
-//         return res.send(commentData);
-//     } catch(error){
-//         return res.status(500).send(`Internal Server Error: ${error}`);
-//     }
-// });
-
-//get all comments and ids in db
-router.get('/replies', async(req,res) => {
-    try{
-        const replies = await Reply.find();
-        return res.send(replies);
-    } catch (error) {
-        return res.status(500).send(`Internal Server Error: ${error}`);
-    }
-});
-
-
 //post reply to specific comment
 router.put('/:commentId', async (req,res) => {
     try{
@@ -90,11 +65,11 @@ router.put('/:commentId', async (req,res) => {
             { new: true}
         );
         if (!comment)
-    return res.status(400).send(`The comment with id "${req.params.id}" does not exist.`);
+            return res.status(400).send(`The comment with id "${req.params.id}" does not exist.`);
 
     await comment.save();
     return res.send(comment);
-    
+
     } catch (error) {
         return res.status(500).send(`Internal Server Error: ${error}`);
     }
