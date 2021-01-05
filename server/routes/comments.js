@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 
+
 //get all comments and and replies in db
 router.get('/', async(req,res) => {
     try{
@@ -114,5 +115,44 @@ router.put('/:commentId', async (req,res) => {
     }
 });
 
+//add like to comment
+router.put('/:commentId/like', async (req,res) => {
+    try{
+        const comment = await Comment.findByIdAndUpdate(
+            req.params.commentId,
+            {$inc: {likes: 1}
+            },
+            { new: true}
+        );
+        if (!comment)
+            return res.status(400).send(`The comment with id "${req.params.id}" does not exist.`);
+
+    await comment.save();
+    return res.send(comment);
+
+    } catch (error) {
+        return res.status(500).send(`Internal Server Error: ${error}`);
+    }
+});
+
+//add dislike to comment
+router.put('/:commentId/dislike', async (req,res) => {
+    try{
+        const comment = await Comment.findByIdAndUpdate(
+            req.params.commentId,
+            {$inc: {dislikes: 1}
+            },
+            { new: true}
+        );
+        if (!comment)
+            return res.status(400).send(`The comment with id "${req.params.id}" does not exist.`);
+
+    await comment.save();
+    return res.send(comment);
+
+    } catch (error) {
+        return res.status(500).send(`Internal Server Error: ${error}`);
+    }
+});
 
 module.exports = router;
