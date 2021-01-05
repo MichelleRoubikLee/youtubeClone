@@ -26,6 +26,19 @@ router.get('/:videoId', async(req,res) => {
     }
 });
 
+//delete comment
+router.delete('/:commentId', async (req,res) => {
+    try{
+        const comment = await Comment.findByIdAndRemove(req.params.commentId);
+        if (!comment)
+            return res.status(400).send(`The comment with id "${req.params.id}" does not exist.`);
+        return res.send(comment);
+
+    } catch (error) {
+        return res.status(500).send(`Internal Server Error: ${error}`);
+    }
+});
+
 //post comment to specific videoid
 router.post('/', async (req,res) => {
     try {
@@ -42,6 +55,32 @@ router.post('/', async (req,res) => {
         });
         await comment.save();
         return res.send(comment);
+    } catch (error) {
+        return res.status(500).send(`Internal Server Error: ${error}`);
+    }
+});
+//update comment
+router.put('/:commentId', async (req,res) => {
+    try{
+        const { error } = validateComment(req.body);
+        if(error) {
+            return res.status(400).send(error);
+        }
+
+        const comment = await Comment.findByIdAndUpdate(
+            req.params.commentId,
+            {
+                videoId: req.body.videoId,
+                text: req.body.text
+            },
+            { new: true}
+        );
+        if (!comment)
+            return res.status(400).send(`The comment with id "${req.params.id}" does not exist.`);
+
+    await comment.save();
+    return res.send(comment);
+
     } catch (error) {
         return res.status(500).send(`Internal Server Error: ${error}`);
     }
