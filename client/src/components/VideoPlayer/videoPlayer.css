@@ -1,0 +1,13 @@
+.player {
+  display: flex;
+  flex-direction: row;
+  padding: .5rem;
+}
+
+.title {
+  font-weight: bolder;
+}
+
+.details {
+  margin: .5rem;
+}
