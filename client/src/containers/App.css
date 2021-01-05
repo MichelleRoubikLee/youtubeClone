@@ -1,7 +1,12 @@
 .main-video {
   display: flex;
+<<<<<<< HEAD
   flex-direction: column;
   justify-content: flex-start;
   padding-left: 1rem;
+=======
+  justify-content: flex-start;
+  padding-left: 10rem;
+>>>>>>> e52fc3fff00786984b45042c0476b5e7241177d5
   padding-top: 1.5rem;
 }
