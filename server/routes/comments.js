@@ -73,19 +73,30 @@ router.get('/replies', async(req,res) => {
 
 
 //post reply to specific comment
-router.post('/:commentId', async (req,res) => {
-    try {
+router.put('/:commentId', async (req,res) => {
+    try{
         const { error } = validateReply(req.body);
         if(error) {
-            return res.status(400).send('hello' + error);
+            return res.status(400).send(error);
         }
         const reply = new Reply ({
             text: req.body.text
         });
-        await reply.save();
-        return res.send(reply);
-    } catch (ex) {
-        return res.status(500).send(`Internal Server Error: ${ex}`);
+        const comment = await Comment.findByIdAndUpdate(
+            req.params.commentId,
+            {
+                replies: reply
+            },
+            { new: true}
+        );
+        if (!comment)
+    return res.status(400).send(`The comment with id "${req.params.id}" does not exist.`);
+
+    await comment.save();
+    return res.send(comment);
+    
+    } catch (error) {
+        return res.status(500).send(`Internal Server Error: ${error}`);
     }
 });
 
