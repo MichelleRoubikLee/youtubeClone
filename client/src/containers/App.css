@@ -1,0 +1,7 @@
+.main-video {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 1rem;
+  padding-top: 1.5rem;
+}
