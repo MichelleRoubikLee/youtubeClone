@@ -1,7 +1,7 @@
 import React from 'react';
 import './addComment.css'
 
-const Comments = () => {
+const AddComments = () => {
     return (
         <div className="comments">
             <div className="form-floating">
@@ -13,4 +13,4 @@ const Comments = () => {
     )
 }
 
-export default Comments
+export default AddComments
