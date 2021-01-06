@@ -1,5 +1,5 @@
 import React from 'react';
-import './comments.css'
+import './addComment.css'
 
 const Comments = () => {
     return (
@@ -7,6 +7,7 @@ const Comments = () => {
             <div className="form-floating">
                 <label htmlFor="floatingTextarea2">Comments</label>
                 <textarea className="form-control" placeholder="Add a comment" id="floatingTextarea2" style={{height:"100px"}}></textarea>
+                <button className="btn-sm">Add</button>
             </div>
         </div>
     )
