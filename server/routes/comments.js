@@ -88,7 +88,7 @@ router.put('/:commentId', async (req,res) => {
 });
 
 //post reply to specific comment
-router.put('/:commentId', async (req,res) => {
+router.put('/:commentId/reply', async (req,res) => {
     try{
         const { error } = validateReply(req.body);
         if(error) {
