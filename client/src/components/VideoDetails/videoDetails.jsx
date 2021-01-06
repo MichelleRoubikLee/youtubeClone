@@ -6,7 +6,7 @@ const VideoDetails = ({video}) => {
         return (
             <div>
                 <div>
-                    <iframe width="1232" height="721" src="https://www.youtube.com/embed/bSuk-H5PFXs" allowFullScreen title='Video player'/>
+                    <iframe width="1296" height="785" src="https://www.youtube.com/embed/bSuk-H5PFXs" allowFullScreen title='Video player'/>
                 </div>
                 <div>
                     <h4 className="dev-title">Best of the Houston Rockets | 2018-19 NBA Season</h4>

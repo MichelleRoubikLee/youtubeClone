@@ -2,6 +2,12 @@
     margin-top: .5em;
 }
 
+.btn-sm {
+    background-color: lightgray;
+    transition: all;
+}
+
 .btn-sm:hover {
     cursor: pointer;
+    transform: scale(1.2);
 }
