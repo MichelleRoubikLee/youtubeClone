@@ -2,6 +2,9 @@ import React from 'react';
 import './addComment.css'
 
 const Comments = () => {
+    //route to add comment
+
+
     return (
         <div className="comments">
             <div className="form-floating">
