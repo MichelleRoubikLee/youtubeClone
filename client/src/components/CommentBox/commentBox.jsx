@@ -1,20 +1,17 @@
 import React from 'react';
-//import './addComment.css'
+import './commentBox.css';
 
-const CommentBox = () => {
-    //route to add comment
-
-
-    return (
-        <div className="CommentBox">
-            {/* //text
-            //like
-            //dislike
-            //button reply
-            //button update
-            //button delete */}
+const CommentBox = ({text, likes}) => {
+    return(
+        <div className="comment-box">
+            <p>{text}</p>
+            <div>
+                <button className="thumbs-up"></button>{likes}
+                <button className="thumbs-down"></button>
+                <button className="reply">REPLY</button>
+            </div>
         </div>
     )
 }
 
-export default CommentBox
+export default CommentBox;

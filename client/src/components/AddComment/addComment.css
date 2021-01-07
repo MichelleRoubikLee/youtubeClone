@@ -4,7 +4,10 @@
 
 .btn-sm {
     background-color: lightgray;
+    opacity: .8;
+    color: black;
     transition: all;
+    width: 5em;
 }
 
 .btn-sm:hover {
