@@ -43,9 +43,6 @@
 }
 
 .comment-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
     margin-top: 1em;
     padding-bottom:.5em ;
 }
