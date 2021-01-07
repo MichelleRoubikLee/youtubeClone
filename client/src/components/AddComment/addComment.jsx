@@ -9,8 +9,9 @@ const AddComments = () => {
                 <textarea className="form-control" placeholder="Add a comment" id="floatingTextarea2" style={{height:"100px"}}></textarea>
                 <button className="btn-sm">Add</button>
             </div>
-        </div>
-    )
-}
+        </div>    
+        )
+    }
+    
 
-export default AddComments
+export default AddComments;
