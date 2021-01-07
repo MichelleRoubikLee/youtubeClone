@@ -34,6 +34,7 @@ router.delete('/:commentId', async (req,res) => {
         if (!comment)
             return res.status(400).send(`The comment with id "${req.params.id}" does not exist.`);
         return res.send(comment);
+        
 
     } catch (error) {
         return res.status(500).send(`Internal Server Error: ${error}`);
