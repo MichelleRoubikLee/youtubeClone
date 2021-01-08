@@ -4,7 +4,10 @@
 
 .btn-sm {
     background-color: lightgray;
+    opacity: .8;
+    color: black;
     transition: all;
+    width: 5em;
 }
 
 .btn-sm:hover {
@@ -14,4 +17,8 @@
 
 .text-box{
     height:100px;
+}
+
+.form-floating {
+    width: 100%;
 }

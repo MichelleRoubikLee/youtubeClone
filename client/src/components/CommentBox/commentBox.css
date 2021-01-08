@@ -1,0 +1,48 @@
+.thumbs-up {
+    background-image: url('../../images/thumbsUP.jpeg');
+    background-size: cover;
+    height: 3rem;
+    width: 3rem;
+    border: none;
+    opacity: .6;
+    transition: all;
+}
+
+.thumbs-up:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.thumbs-down {
+    background-image: url('../../images/thumbsDown.jpeg');
+    background-size: cover;
+    height: 3rem;
+    width: 3rem;
+    border: none;
+    opacity: .6;
+    transition: all;
+}
+
+.thumbs-down:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.reply {
+    height: 3rem;
+    width: 3rem;
+    border: none;
+    opacity: .9;
+    font-size: .8em;
+    transition: all;
+}
+
+.reply:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.comment-box {
+    margin-top: 1em;
+    padding-bottom:.5em ;
+}

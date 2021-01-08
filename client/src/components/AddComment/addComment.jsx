@@ -62,6 +62,5 @@ class AddComments extends React.Component{
         )
     }
     
-}
 
-export default AddComments
+export default AddComments;

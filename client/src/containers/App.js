@@ -3,7 +3,7 @@ import SearchBar from '../components/SearchBar/searchBar';
 import youtube from '../api/youtube';
 import VideoList from '../components/VideoList/videoList';
 import VideoDetails from '../components/VideoDetails/videoDetails';
-import AddComment from '../components/AddComment/addComment';
+import CommentSection from '../components/CommentSection/commentSection';
 import './App.css';
 
 class App extends Component {
@@ -11,8 +11,7 @@ class App extends Component {
     super();
     this.state = {
       videos: [],
-      currentVideo: null,
-      comments: []
+      currentVideo: null
     }
   }
   
@@ -53,6 +52,7 @@ class App extends Component {
             <div className="col-sm main-video">
               <VideoDetails video={this.state.currentVideo}/>
               <AddComment currentVideo={this.state.currentVideo}/>
+              <CommentSection currentVideo={this.state.currentVideo}/>
             </div>
             <div className="col-sm">
               <VideoList className="video-list" handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>
