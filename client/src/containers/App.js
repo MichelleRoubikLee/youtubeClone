@@ -52,7 +52,7 @@ class App extends Component {
           <div className="row">
             <div className="col-sm main-video">
               <VideoDetails video={this.state.currentVideo}/>
-              <AddComment/>
+              <AddComment currentVideo={this.state.currentVideo}/>
             </div>
             <div className="col-sm">
               <VideoList className="video-list" handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>

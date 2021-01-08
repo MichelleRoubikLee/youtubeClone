@@ -1,16 +1,16 @@
 import React from 'react';
-import './addComment.css'
+import './addComment.css';
+import axios from 'axios';
 
 class AddComments extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            commentInput: ""
+            commentInput: "",
         };
 
         this.handleChange = this.handleChange.bind(this);
-        //this.handleSubmit = this.handleSubmit.bind(this);
-        
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     
@@ -19,14 +19,33 @@ class AddComments extends React.Component{
         this.setState({
             [name]: event.target.value,
         })
-        console.log(event.target.value)
+        //console.log(event.target.value)
     }
 
-    
+    handleSubmit(event){
+        event.preventDefault();
+        // console.log(this.state.commentInput);
+        this.pushComment(this.state.commentInput);
+    }
+
+    pushComment(commentInput){
+        console.log(this.state.commentInput);
+        const videoId = this.props.currentVideo.id.videoId;
+        axios({
+            method: 'post',
+            url: 'http://localhost:5000/api/comments',
+            data: {
+                videoId: videoId,
+                text: commentInput
+            }
+        })
+    }
+
+
     render(){
         return (
             <div className="comments">
-                <div className="form-floating">
+                <form onSubmit={this.handleSubmit} className="form-floating">
                     <label htmlFor="textBox">Comments</label>
                     <input 
                         name="commentInput" 
@@ -37,8 +56,8 @@ class AddComments extends React.Component{
                         onChange={this.handleChange} 
                     >
                     </input>
-                    <button className="btn-sm">Add</button>
-                </div>
+                    <button type="submit" className="btn-sm">Add</button>
+                </form>
             </div>
         )
     }
