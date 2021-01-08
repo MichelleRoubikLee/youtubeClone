@@ -18,3 +18,7 @@
 .text-box{
     height:100px;
 }
+
+.form-floating {
+    width: 100%;
+}
