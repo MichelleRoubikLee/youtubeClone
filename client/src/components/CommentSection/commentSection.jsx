@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import AddComment from '../AddComment/addComment';
 import CommentList from '../CommentList/commentList';
 
 class CommentSection extends Component {
@@ -10,24 +9,6 @@ class CommentSection extends Component {
             comments: [],
             comment: ''
         }
-    }
-
-    handleChange = event => {
-      this.setState({comment:event.target.value})
-    }
-
-    handleSubmit = event => {
-      event.preventDefault();
-      const myComment = {
-        text: this.state.comment,
-        videoId: this.props.currentVideo.id.videoId
-      };
-
-      axios.post('http://localhost:5000/api/comments', {myComment})
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
     }
 
     componentDidMount() {
@@ -43,7 +24,6 @@ class CommentSection extends Component {
     render(){
         return(
             <div>
-            <AddComment change={this.handleChange} submit={this.handleSubmit}/>
             <br></br>
             <br></br>
             <CommentList comments={this.state.comments}/>

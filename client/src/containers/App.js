@@ -4,6 +4,7 @@ import youtube from '../api/youtube';
 import VideoList from '../components/VideoList/videoList';
 import VideoDetails from '../components/VideoDetails/videoDetails';
 import CommentSection from '../components/CommentSection/commentSection';
+import AddComment from '../components/AddComment/addComment';
 import './App.css';
 
 class App extends Component {

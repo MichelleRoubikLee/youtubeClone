@@ -2,7 +2,7 @@ import React from 'react';
 import './addComment.css';
 import axios from 'axios';
 
-class AddComments extends React.Component{
+class AddComment extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -61,6 +61,7 @@ class AddComments extends React.Component{
             </div>
         )
     }
+}
     
 
-export default AddComments;
+export default AddComment;
