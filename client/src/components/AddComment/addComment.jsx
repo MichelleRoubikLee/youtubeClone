@@ -43,6 +43,12 @@ class AddComment extends React.Component{
 
 
     render(){
+        if (!this.props.video) {
+            return (
+                <div>
+                </div>
+            )
+        }
         return (
             <div className="comments">
                 <form onSubmit={this.handleSubmit} className="form-floating">

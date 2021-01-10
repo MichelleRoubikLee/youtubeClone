@@ -4,17 +4,7 @@
 const VideoDetails = ({video}) => {
     if (!video) {
         return (
-            <div>
-                <div>
-                    <iframe width="1296" height="785" src="https://www.youtube.com/embed/bSuk-H5PFXs" allowFullScreen title='Video player'/>
-                </div>
-                <div>
-                    <h4 className="dev-title">Best of the Houston Rockets | 2018-19 NBA Season</h4>
-                    <h6>NBA</h6>
-                    <p className="border-bottom">Check out the best of the Houston Rockets from this past season!</p>
-                </div>
-                
-            </div>
+            <h1></h1>
         )
     }
 

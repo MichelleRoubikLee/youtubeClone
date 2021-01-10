@@ -22,6 +22,12 @@ class CommentSection extends Component {
       }
     
     render(){
+      if (!this.props.video) {
+        return (
+            <div>
+            </div>
+        )
+    }
         return(
             <div>
             <br></br>

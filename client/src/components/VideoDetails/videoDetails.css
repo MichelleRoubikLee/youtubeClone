@@ -5,3 +5,10 @@
 .dev-title {
     margin-bottom: .75em;
 }
+
+.suggest {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1em;
+}
