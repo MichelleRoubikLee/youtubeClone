@@ -4,7 +4,7 @@
 const VideoDetails = ({video}) => {
     if (!video) {
         return (
-            <h1></h1>
+            <div></div>
         )
     }
 
