@@ -2,62 +2,65 @@ import React from 'react';
 import './commentBox.css';
 import axios from 'axios';
 
+//sX8GgDgjq00 example video
+
 class CommentBox extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            // likes: ;
-            // dislikes: ;
+            likes: this.props.comment.likes,
+            dislikes: this.props.comment.dislikes,
             // replies: ;
-            //commentId= ;
+            commentId: this.props.comment._id
         };
 
-        // this.handleLike = this.handleLike.bind(this);
-        // this.handleDislike = this.handleDislike.bind(this);
-        // this.handleReply = this.handleReply.bind(this);
     }
-
-    handleLike(event){
+    handleLike = (event) => {
         event.preventDefault();
+        let commentId = this.state.commentId;
+
+        axios({
+          method: 'put',
+          url: 'http://localhost:5000/api/comments/' + commentId + '/like',
+        })
+    }
+    
+    handleDislike = (event) => {
+        event.preventDefault();
+        let commentId = this.state.commentId;
         
-        // axios({
-        //     method: 'put',
-        //     url: 'http://localhost:5000/api/comments/' + commentId + '/like',
-        // })
+        axios({
+          method: 'put',
+          url: 'http://localhost:5000/api/comments/' + commentId + '/dislike',
+        })
     }
-
-    handleDisike(event){
+    
+    handleReply = (event) => {
         event.preventDefault();
-        
+        let commentId = this.state.commentId;
+        console.log("handleReply")
         // axios({
-        //     method: 'put',
-        //     url: 'http://localhost:5000/api/comments/' + commentId + '/dislike',
+        //   method: 'put',
+        //   url: 'http://localhost:5000/api/comments/' + commentId + '/reply',
+        //   data: {
+        //     text: replyText
+        //   }
         // })
     }
+   
+    // showReplyForm(){
 
-    handleReply(event){
-        event.preventDefault();
-        // axios({
-        //     method: 'put',
-        //     url: 'http://localhost:5000/api/comments/' + commentId + '/reply',
-        //     data: {
-        //         text: replyText
-        //     }
-        // })
-    }
-
-    showReplyForm(){
-
-    }
+    // }
 
     render(){
+    
         return(
             <div className="comment-box">
-                <p></p>
+                <p>{this.props.text}</p>
                 <div>
-                    <button className="thumbs-up" onclick={this.handleLike}></button>
-                    <button className="thumbs-down" onclick={this.handleDislike}></button>
-                    <button className="reply" onclick={this.handleReply}>REPLY</button>
+                    <button className="thumbs-up" onClick={this.handleLike}></button>{this.state.likes}
+                    <button className="thumbs-down" onClick={this.handleDislike}></button>{this.state.dislikes}
+                    <button className="reply" onClick={this.handleReply}>REPLY</button>
                 </div>
             </div>
         )

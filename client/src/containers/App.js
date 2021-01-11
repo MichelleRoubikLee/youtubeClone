@@ -7,6 +7,7 @@ import CommentSection from '../components/CommentSection/commentSection';
 import AddComment from '../components/AddComment/addComment';
 import './App.css';
 
+
 class App extends Component {
   constructor(){
     super();
@@ -38,9 +39,47 @@ class App extends Component {
     })
   };
 
+  componentDidUpdate(){
+
+  }
+
   handleVideoSelect = (video) => {
     this.setState({currentVideo: video})
   }
+
+  //--------------
+  // handleLike = (event) => {
+  //   event.preventDefault();
+  //   console.log("handleLike");
+    
+  //   // axios({
+  //   //   method: 'put',
+  //   //   url: 'http://localhost:5000/api/comments/' + commentId + '/like',
+  //   // })
+  // }
+
+  // handleDisike = (event) => {
+  //   event.preventDefault();
+  //   console.log("handleDisike");
+    
+  //   // axios({
+  //   //   method: 'put',
+  //   //   url: 'http://localhost:5000/api/comments/' + commentId + '/dislike',
+  //   // })
+  // }
+
+  // handleReply = (event) => {
+  //   event.preventDefault();
+  //   console.log("handleReply");
+  //   // axios({
+  //   //   method: 'put',
+  //   //   url: 'http://localhost:5000/api/comments/' + commentId + '/reply',
+  //   //   data: {
+  //   //     text: replyText
+  //   //   }
+  //   // })
+  // }
+
 
   render(){
     return(
@@ -52,8 +91,14 @@ class App extends Component {
           <div className="row">
             <div className="col-sm main-video">
               <VideoDetails video={this.state.currentVideo}/>
-              <AddComment currentVideo={this.state.currentVideo} video={this.state.currentVideo}/>
-              <CommentSection video={this.state.currentVideo}/>
+              <AddComment  
+                video={this.state.currentVideo}/>
+              <CommentSection 
+                video={this.state.currentVideo}
+                // handleLike = {this.handleLike}
+                // handleDislike = {this.handleDislike}
+                // handleReply = {this.handleReply}
+                />
             </div>
             <div className="col-sm">
               <VideoList className="video-list" handleVideoSelect={this.handleVideoSelect} videos={this.state.videos} video={this.state.currentVideo}/>

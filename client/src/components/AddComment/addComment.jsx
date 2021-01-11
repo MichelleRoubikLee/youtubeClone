@@ -30,7 +30,7 @@ class AddComment extends React.Component{
 
     pushComment(commentInput){
         console.log(this.state.commentInput);
-        const videoId = this.props.currentVideo.id.videoId;
+        const videoId = this.props.video.id.videoId;
         axios({
             method: 'post',
             url: 'http://localhost:5000/api/comments',
@@ -39,6 +39,10 @@ class AddComment extends React.Component{
                 text: commentInput
             }
         })
+    }
+
+    componentDidMount = () => {
+
     }
 
 
