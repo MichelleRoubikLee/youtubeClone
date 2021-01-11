@@ -52,11 +52,11 @@ class App extends Component {
           <div className="row">
             <div className="col-sm main-video">
               <VideoDetails video={this.state.currentVideo}/>
-              <AddComment currentVideo={this.state.currentVideo}/>
-              <CommentSection currentVideo={this.state.currentVideo}/>
+              <AddComment currentVideo={this.state.currentVideo} video={this.state.currentVideo}/>
+              <CommentSection video={this.state.currentVideo}/>
             </div>
             <div className="col-sm">
-              <VideoList className="video-list" handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>
+              <VideoList className="video-list" handleVideoSelect={this.handleVideoSelect} videos={this.state.videos} video={this.state.currentVideo}/>
             </div>
           </div>
         </div>

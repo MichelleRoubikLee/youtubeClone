@@ -22,11 +22,17 @@ class CommentSection extends Component {
       }
     
     render(){
+      if (!this.props.video) {
+        return (
+            <div>
+            </div>
+        )
+    }
         return(
             <div>
             <br></br>
             <br></br>
-            <CommentList comments={this.state.comments}/>
+            <CommentList currentVideoId={this.props.video.id.videoId} comments={this.state.comments}/>
             </div>
         )
     }  
