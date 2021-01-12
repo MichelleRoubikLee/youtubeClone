@@ -1,16 +1,13 @@
 import React from 'react';
 import VideoPlayer from '../VideoPlayer/videoPlayer';
-import './videoList.css';
+import './defaultVideos.css';
 
-const VideoList = ({videos, handleVideoSelect, video}) => {
-  if (!video) {
-    return <div></div>
-}
+const DefaultVideos = ({videos, handleVideoSelect}) => {
   const renderedVideos = videos.map((video) => {
     return <VideoPlayer key={video.id.videoId} video={video} handleVideoSelect={handleVideoSelect} />
   });
 
-  return <div className="container-fluid video-list">{renderedVideos}</div>
+  return <div className="container-fluid default">{renderedVideos}</div>
 };
 
-export default VideoList;
+export default DefaultVideos;

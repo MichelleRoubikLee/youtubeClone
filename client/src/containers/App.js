@@ -5,6 +5,7 @@ import VideoList from '../components/VideoList/videoList';
 import VideoDetails from '../components/VideoDetails/videoDetails';
 import CommentSection from '../components/CommentSection/commentSection';
 import AddComment from '../components/AddComment/addComment';
+import DefaultVideos from '../components/DefaultVideos/defaultVideos';
 import './App.css';
 
 class App extends Component {
@@ -51,6 +52,7 @@ class App extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm main-video">
+              <DefaultVideos handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>
               <VideoDetails video={this.state.currentVideo}/>
               <AddComment currentVideo={this.state.currentVideo} video={this.state.currentVideo}/>
               <CommentSection video={this.state.currentVideo}/>
