@@ -64,7 +64,7 @@ class CommentBox extends React.Component{
     }
 
     render(){
-        console.log(this.state.replies);
+        console.log(this.state.replies[0].text);
         // const {likes,dislikes,text,_id,replies} = this.props.comment;
         // console.log(likes,dislikes,text,_id,replies);
         return(

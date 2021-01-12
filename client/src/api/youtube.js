@@ -1,5 +1,5 @@
 import axios from 'axios';
-const KEY = 'apiKey';
+import apiKey from '../config/default';
 
 export default axios.create({
 
@@ -8,7 +8,7 @@ export default axios.create({
     part:'snippet',
     type: 'video',
     maxResults: 3,
-    key: KEY
+    key: apiKey
   }
 
 })
