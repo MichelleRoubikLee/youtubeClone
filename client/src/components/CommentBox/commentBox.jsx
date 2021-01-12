@@ -12,10 +12,17 @@ class CommentBox extends React.Component{
             dislikes: this.props.comment.dislikes,
             replies: this.props.comment.replies,
             replyInput: "",
-            commentId: this.props.comment._id
+            commentId: this.props.comment._id,
+            commentReply: ""
         };
 
     }
+    replyExists(replies){
+        if(replies){
+            return(this.state.replies[0].text)
+        }
+    }
+
     handleLike = (event) => {
         event.preventDefault();
         let commentId = this.state.commentId;
@@ -64,7 +71,6 @@ class CommentBox extends React.Component{
     }
 
     render(){
-        console.log(this.state.replies[0].text);
         // const {likes,dislikes,text,_id,replies} = this.props.comment;
         // console.log(likes,dislikes,text,_id,replies);
         return(
@@ -75,7 +81,7 @@ class CommentBox extends React.Component{
                     <button className="thumbs-down" onClick={this.handleDislike}></button>{this.state.dislikes}
                     <form onSubmit={this.handleReply} className="form-floating">
                         <label htmlFor="textBox">Reply</label>
-                        {/* <div>{this.state.replies}</div> */}
+                        <div>{this.replyExists(this.state.replies[0])}</div>
                         <input 
                             name="replyInput" 
                             type="text" 
