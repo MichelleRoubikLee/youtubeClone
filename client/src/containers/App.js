@@ -6,6 +6,7 @@ import VideoDetails from '../components/VideoDetails/videoDetails';
 import CommentSection from '../components/CommentSection/commentSection';
 import AddComment from '../components/AddComment/addComment';
 import DefaultVideos from '../components/DefaultVideos/defaultVideos';
+import SideBar from '../components/SideBar/sideBar';
 import './App.css';
 
 
@@ -60,7 +61,10 @@ class App extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm main-video">
-              <DefaultVideos handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>
+              <div className="landingPage">
+              <SideBar/>
+              <DefaultVideos handleVideoSelect={this.handleVideoSelect} videos={this.state.videos} video={this.state.currentVideo}/>
+              </div>
               <VideoDetails video={this.state.currentVideo}/>
               <AddComment  
                 video={this.state.currentVideo}/>
