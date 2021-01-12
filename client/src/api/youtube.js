@@ -1,5 +1,5 @@
 import axios from 'axios';
-const KEY = 'AIzaSyC_eenqdJKBuG-wx4nWt-XJm-ey_lUgP9g';
+const KEY = 'apiKey';
 
 export default axios.create({
 
@@ -7,7 +7,7 @@ export default axios.create({
   params: {
     part:'snippet',
     type: 'video',
-    maxResults: 10,
+    maxResults: 3,
     key: KEY
   }
 

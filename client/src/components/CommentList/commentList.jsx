@@ -1,18 +1,15 @@
 import React from 'react';
 import CommentBox from '../CommentBox/commentBox';
 
-const CommentList = ({comments, currentVideoId, handleLike, handleDislike, handleReply}) => {
-  const renderedComments = comments.map((comment, i) => {
-    if(currentVideoId === comments[i].videoId){
+const CommentList = ({comments, currentVideoId}) => {
+  const renderedComments = comments.map((comment) => {
+    if(currentVideoId === comment.videoId){
       return (<CommentBox 
-        //key={comments[i]} 
-        text={comments[i].text} 
-        likes={comments[i].likes}
-        dislikes={comments[i].dislikes}
-        comment = {comments[i]}
-        // handleLike = {handleLike}
-        // handleDislike = {handleDislike}
-        // handleReply = {handleReply}
+        key={comment} 
+        text={comment.text} 
+        likes={comment.likes}
+        dislikes={comment.dislikes}
+        comment = {comment}
       />)
     }
   });

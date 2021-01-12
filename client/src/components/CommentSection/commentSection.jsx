@@ -35,9 +35,6 @@ class CommentSection extends Component {
             <CommentList 
               currentVideoId={this.props.video.id.videoId} 
               comments={this.state.comments}
-              // handleLike = {this.props.handleLike}
-              // handleDislike = {this.props.handleDislike}
-              // handleReply = {this.props.handleReply}
             />
             </div>
         )

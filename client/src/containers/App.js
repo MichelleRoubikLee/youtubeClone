@@ -47,38 +47,7 @@ class App extends Component {
     this.setState({currentVideo: video})
   }
 
-  //--------------
-  // handleLike = (event) => {
-  //   event.preventDefault();
-  //   console.log("handleLike");
-    
-  //   // axios({
-  //   //   method: 'put',
-  //   //   url: 'http://localhost:5000/api/comments/' + commentId + '/like',
-  //   // })
-  // }
 
-  // handleDisike = (event) => {
-  //   event.preventDefault();
-  //   console.log("handleDisike");
-    
-  //   // axios({
-  //   //   method: 'put',
-  //   //   url: 'http://localhost:5000/api/comments/' + commentId + '/dislike',
-  //   // })
-  // }
-
-  // handleReply = (event) => {
-  //   event.preventDefault();
-  //   console.log("handleReply");
-  //   // axios({
-  //   //   method: 'put',
-  //   //   url: 'http://localhost:5000/api/comments/' + commentId + '/reply',
-  //   //   data: {
-  //   //     text: replyText
-  //   //   }
-  //   // })
-  // }
 
 
   render(){
