@@ -8,6 +8,7 @@ import AddComment from '../components/AddComment/addComment';
 import DefaultVideos from '../components/DefaultVideos/defaultVideos';
 import './App.css';
 
+
 class App extends Component {
   constructor(){
     super();
@@ -39,9 +40,16 @@ class App extends Component {
     })
   };
 
+  componentDidUpdate(){
+
+  }
+
   handleVideoSelect = (video) => {
     this.setState({currentVideo: video})
   }
+
+
+
 
   render(){
     return(
@@ -54,8 +62,14 @@ class App extends Component {
             <div className="col-sm main-video">
               <DefaultVideos handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>
               <VideoDetails video={this.state.currentVideo}/>
-              <AddComment currentVideo={this.state.currentVideo} video={this.state.currentVideo}/>
-              <CommentSection video={this.state.currentVideo}/>
+              <AddComment  
+                video={this.state.currentVideo}/>
+              <CommentSection 
+                video={this.state.currentVideo}
+                // handleLike = {this.handleLike}
+                // handleDislike = {this.handleDislike}
+                // handleReply = {this.handleReply}
+                />
             </div>
             <div className="col-sm">
               <VideoList className="video-list" handleVideoSelect={this.handleVideoSelect} videos={this.state.videos} video={this.state.currentVideo}/>

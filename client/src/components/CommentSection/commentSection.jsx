@@ -32,7 +32,10 @@ class CommentSection extends Component {
             <div>
             <br></br>
             <br></br>
-            <CommentList currentVideoId={this.props.video.id.videoId} comments={this.state.comments}/>
+            <CommentList 
+              currentVideoId={this.props.video.id.videoId} 
+              comments={this.state.comments}
+            />
             </div>
         )
     }  
