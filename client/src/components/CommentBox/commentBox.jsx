@@ -68,6 +68,7 @@ class CommentBox extends React.Component{
     handleReply(event){
         event.preventDefault();
         this.pushReply(this.state.replyInput);
+        this.props.updateComments();
     }
    
     handleChange(event){

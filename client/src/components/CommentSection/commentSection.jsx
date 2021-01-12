@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import CommentList from '../CommentList/commentList';
+import AddComment from '../AddComment/addComment';
 
 class CommentSection extends Component {
     constructor(){
@@ -26,21 +27,20 @@ class CommentSection extends Component {
 	}
     
     render(){
-      if (!this.props.video) {
-        return (
-            <div>
-            </div>
-        )
-      }
+      	if (!this.props.video) {
+			return (
+				<div>
+				</div>
+			)
+      	}
         return(
-            <div>
-            <br></br>
-            <br></br>
-            <CommentList 
-              currentVideoId={this.props.video.id.videoId} 
-              comments={this.state.comments}
-			  updateComments={() => this.updateComments()}
-            />
+            <div className="commentSection">
+				<AddComment video={this.props.video} updateComments={() => this.updateComments()}/>
+				<CommentList 
+				currentVideoId={this.props.video.id.videoId} 
+				comments={this.state.comments}
+				updateComments={() => this.updateComments()}
+				/>
             </div>
         )
     }  

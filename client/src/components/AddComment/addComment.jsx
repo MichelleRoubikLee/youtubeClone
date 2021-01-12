@@ -38,21 +38,19 @@ class AddComment extends React.Component{
                 videoId: videoId,
                 text: commentInput
             }
+        }).then(() => {
+            this.props.updateComments();
         })
-    }
-
-    componentDidMount = () => {
-
     }
 
 
     render(){
-        if (!this.props.video) {
-            return (
-                <div>
-                </div>
-            )
-        }
+        // if (!this.props.video) {
+        //     return (
+        //         <div>
+        //         </div>
+        //     )
+        // }
         return (
             <div className="comments">
                 <form onSubmit={this.handleSubmit} className="form-floating">
