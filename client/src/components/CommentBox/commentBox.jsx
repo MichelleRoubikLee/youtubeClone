@@ -2,21 +2,22 @@ import React from 'react';
 import './commentBox.css';
 import axios from 'axios';
 
-//sX8GgDgjq00 example video
+//LKz7mVBrWh8 example video
 
 class CommentBox extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            likes: this.props.comment.likes,
-            dislikes: this.props.comment.dislikes,
             replies: this.props.comment.replies,
             replyInput: "",
-            commentId: this.props.comment._id,
             commentReply: ""
         };
-
+        this.handleChange = this.handleChange.bind(this);
+        this.handleReply = this.handleReply.bind(this);
     }
+
+
+
     replyExists(replies){
         if(replies){
             return(this.state.replies[0].text)
@@ -25,28 +26,33 @@ class CommentBox extends React.Component{
 
     handleLike = (event) => {
         event.preventDefault();
-        let commentId = this.state.commentId;
+        let commentId = this.props.comment._id;
 
         axios({
           method: 'put',
           url: 'http://localhost:5000/api/comments/' + commentId + '/like',
+
+        }).then(() => {
+            this.props.updateComments();
         })
+
     }
     
     handleDislike = (event) => {
         event.preventDefault();
-        let commentId = this.state.commentId;
+        let commentId = this.props.comment._id;
         
         axios({
           method: 'put',
           url: 'http://localhost:5000/api/comments/' + commentId + '/dislike',
+        }).then(() => {
+            this.props.updateComments();
+            //this.replyExists();
         })
     }
     
-    
-
     pushReply(replyInput){
-        let commentId = this.state.commentId;
+        let commentId = this.props.comment._id;
         console.log("handleReply")
         axios({
           method: 'put',
@@ -54,12 +60,15 @@ class CommentBox extends React.Component{
           data: {
             text: replyInput
           }
+        }).then(() => {
+            this.props.updateComments();
         })
     }
 
     handleReply(event){
         event.preventDefault();
         this.pushReply(this.state.replyInput);
+        this.props.updateComments();
     }
    
     handleChange(event){
@@ -67,18 +76,15 @@ class CommentBox extends React.Component{
         this.setState({
             [name]: event.target.value,
         })
-        //console.log(event.target.value)
     }
 
     render(){
-        // const {likes,dislikes,text,_id,replies} = this.props.comment;
-        // console.log(likes,dislikes,text,_id,replies);
         return(
             <div className="comment-box">
                 <p>{this.props.text}</p>
                 <div>
-                    <button className="thumbs-up" onClick={this.handleLike}></button>{this.state.likes}
-                    <button className="thumbs-down" onClick={this.handleDislike}></button>{this.state.dislikes}
+                    <button className="thumbs-up" onClick={this.handleLike}></button>{this.props.comment.likes}
+                    <button className="thumbs-down" onClick={this.handleDislike}></button>{this.props.comment.dislikes}
                     <form onSubmit={this.handleReply} className="form-floating">
                         <label htmlFor="textBox">Reply</label>
                         <div>{this.replyExists(this.state.replies[0])}</div>

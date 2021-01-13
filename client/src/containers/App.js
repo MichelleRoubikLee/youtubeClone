@@ -4,7 +4,6 @@ import youtube from '../api/youtube';
 import VideoList from '../components/VideoList/videoList';
 import VideoDetails from '../components/VideoDetails/videoDetails';
 import CommentSection from '../components/CommentSection/commentSection';
-import AddComment from '../components/AddComment/addComment';
 import DefaultVideos from '../components/DefaultVideos/defaultVideos';
 import './App.css';
 
@@ -64,13 +63,8 @@ class App extends Component {
               <DefaultVideos handleVideoSelect={this.handleVideoSelect} videos={this.state.videos} video={this.state.currentVideo}/>
               </div>
               <VideoDetails video={this.state.currentVideo}/>
-              <AddComment  
-                video={this.state.currentVideo}/>
               <CommentSection 
                 video={this.state.currentVideo}
-                // handleLike = {this.handleLike}
-                // handleDislike = {this.handleDislike}
-                // handleReply = {this.handleReply}
                 />
             </div>
             <div className="col-sm">
